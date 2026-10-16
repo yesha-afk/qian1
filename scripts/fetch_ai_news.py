@@ -6,7 +6,7 @@
 """
 import json
 import os
-import urllib.request
+import urllib.request as urlrequest
 import urllib.parse
 from datetime import datetime, timezone, timedelta
 
@@ -24,8 +24,8 @@ def fetch_hn():
         "hitsPerPage": 30,
     })
     url = f"https://hn.algolia.com/api/v1/search_by_date?{params}"
-    req = urllib.请求.Request(url, headers={"User-Agent": "daily-ai-news-bot/1.0"})
-    with urllib.请求.urlopen(req, timeout=20) as resp:
+    req = urlrequest.Request(url, headers={"User-Agent": "daily-ai-news-bot/1.0"})
+    with urlrequest.urlopen(req, timeout=20) as resp:
         data = json.loads(resp.read().decode("utf-8"))
     return data.get("hits", [])
 
