@@ -24,8 +24,8 @@ def fetch_hn():
         "hitsPerPage": 30,
     })
     url = f"https://hn.algolia.com/api/v1/search_by_date?{params}"
-    req = urllib.request.Request(url, headers={"User-Agent": "daily-ai-news-bot/1.0"})
-    with urllib.request.urlopen(req, timeout=20) as resp:
+    req = urllib.请求.Request(url, headers={"User-Agent": "daily-ai-news-bot/1.0"})
+    with urllib.请求.urlopen(req, timeout=20) as resp:
         data = json.loads(resp.read().decode("utf-8"))
     return data.get("hits", [])
 
